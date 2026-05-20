@@ -5,14 +5,44 @@ import Social from './Social.astro';
 ---
 <style>
   footer {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap; /* permite que baje a otra línea */
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
     margin-top: 2rem;
+    padding: 1rem 0;
+  }
+  footer .socials {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  /* Responsive para pantallas pequeñas */
+  @media (max-width: 600px) {
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    footer .socials {
+      justify-content: flex-start;
+    }
   }
 </style>
+
 <footer>
-  <p>¡Más información sobre mis proyectos en <a href={`https://www.${platform}.com/${username}`}>{platform}</a>!</p>
-  <Social platform="twitter" username="astrodotbuild" />
-  <Social platform="github" username="withastro" />
-  <Social platform="youtube" username="astrodotbuild" />
+  <p>
+    ¡Más información sobre mis proyectos en
+    <a href={`https://www.${platform}.com/${username}`}>{platform}</a>!
+  </p>
+
+  <div class="socials">
+    <Social platform="twitter" username="astrodotbuild" />
+    <Social platform="github" username="withastro" />
+    <Social platform="youtube" username="astrodotbuild" />
+  </div>
 </footer>

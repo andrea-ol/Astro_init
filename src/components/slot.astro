@@ -1,426 +1,719 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Good Game – Perfil</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Good Game – Perfil</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-:root {
-  --green-dark:  #2e7d32;
-  --green-mid:   #4caf50;
-  --green-light: #81c784;
-  --green-pale:  #e8f5e9;
-  --white:       #ffffff;
-  --gray-bg:     #f4f4f4;
-  --gray-text:   #666;
-  --ink:         #222;
-  --radius:      14px;
-  --shadow-card: 0 2px 16px rgba(0,0,0,0.09);
-}
+      :root {
+        --green-dark: #2e7d32;
+        --green-mid: #4caf50;
+        --green-light: #81c784;
+        --green-pale: #e8f5e9;
+        --white: #ffffff;
+        --gray-bg: #f4f4f4;
+        --gray-text: #666;
+        --ink: #222;
+        --radius: 14px;
+        --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.09);
+      }
 
-body {
-  font-family: 'Nunito', sans-serif;
-  background: var(--gray-bg);
-  color: var(--ink);    
-  min-height: 100vh;
-}
+      body {
+        font-family: "Nunito", sans-serif;
+        background: var(--gray-bg);
+        color: var(--ink);
+        min-height: 100vh;
+      }
 
-/* ─── NAVBAR ─── */
-nav {
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  height: 60px;
-  box-shadow: 0 1px 0 #e0e0e0;
-  position: sticky; top: 0; z-index: 100;
-}
-.logo {
-  font-weight: 800; font-size: .9rem;
-  line-height: 1.1; color: var(--green-dark); letter-spacing: .5px;
-}
-.logo span { display: block; font-weight: 400; letter-spacing: 3px; font-size: .7rem; }
-.nav-links { display: flex; align-items: center; gap: 2rem; }
-.nav-links a { text-decoration: none; color: var(--green-dark); font-weight: 600; font-size: .88rem; }
-.btn-logout {
-  background: var(--green-mid); color: white; border: none;
-  padding: 7px 20px; border-radius: 8px; font-family: inherit;
-  font-weight: 700; font-size: .88rem; cursor: pointer; transition: background .2s;
-}
-.btn-logout:hover { background: var(--green-dark); }
+      /* ─── NAVBAR ─── */
+      nav {
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2rem;
+        height: 60px;
+        box-shadow: 0 1px 0 #e0e0e0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .logo {
+        font-weight: 800;
+        font-size: 0.9rem;
+        line-height: 1.1;
+        color: var(--green-dark);
+        letter-spacing: 0.5px;
+      }
+      .logo span {
+        display: block;
+        font-weight: 400;
+        letter-spacing: 3px;
+        font-size: 0.7rem;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--green-dark);
+        font-weight: 600;
+        font-size: 0.88rem;
+      }
+      .btn-logout {
+        background: var(--green-mid);
+        color: white;
+        border: none;
+        padding: 7px 20px;
+        border-radius: 8px;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 0.88rem;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .btn-logout:hover {
+        background: var(--green-dark);
+      }
 
-/* ─── BANNER ─── */
-.banner {
-  width: 100%; height: 220px;
-  position: relative; overflow: hidden;
-  background: linear-gradient(135deg, #ff8a65 0%, #ffb74d 30%, #81d4fa 65%, #a5d6a7 100%);
-}
-.banner svg {
-  position: absolute; bottom: 0; left: 0;
-  width: 100%; height: 100%;
-}
+      /* ─── BANNER ─── */
+      .banner {
+        width: 100%;
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          #ff8a65 0%,
+          #ffb74d 30%,
+          #81d4fa 65%,
+          #a5d6a7 100%
+        );
+      }
+      .banner svg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
 
-/* ─── PAGE WRAP ─── */
-.page-wrap { max-width: 780px; margin: 0 auto; padding: 0 1rem 4rem; }
+      /* ─── PAGE WRAP ─── */
+      .page-wrap {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 0 1rem 4rem;
+      }
 
-/* ─── PROFILE CARD ─── */
-.profile-card {
-  background: white; border-radius: var(--radius);
-  box-shadow: var(--shadow-card); margin-top: -2px;
-  padding-bottom: 1.5rem;
-  animation: fadeUp .45s ease both;
-}
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(18px); }
-  to   { opacity:1; transform:translateY(0); }
-}
+      /* ─── PROFILE CARD ─── */
+      .profile-card {
+        background: white;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-card);
+        margin-top: -2px;
+        padding-bottom: 1.5rem;
+        animation: fadeUp 0.45s ease both;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-.avatar-area { display: flex; flex-direction: column; align-items: center; margin-top: -62px; }
-.avatar-ring {
-  width: 124px; height: 124px; border-radius: 50%;
-  border: 5px solid white; overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-  background: var(--green-pale); position: relative; z-index: 5;
-}
-.avatar-ring img { width:100%; height:100%; object-fit:cover; display:block; }
+      .avatar-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -62px;
+      }
+      .avatar-ring {
+        width: 124px;
+        height: 124px;
+        border-radius: 50%;
+        border: 5px solid white;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+        background: var(--green-pale);
+        position: relative;
+        z-index: 5;
+      }
+      .avatar-ring img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
-.role-badge {
-  margin-top: .75rem;
-  border: 1.5px solid var(--green-dark); color: var(--green-dark);
-  padding: 2px 14px; border-radius: 20px;
-  font-size: .7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-}
+      .role-badge {
+        margin-top: 0.75rem;
+        border: 1.5px solid var(--green-dark);
+        color: var(--green-dark);
+        padding: 2px 14px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
 
-.profile-name {
-  font-size: 2rem; font-weight: 800; text-align: center;
-  margin: .5rem 1rem 0; line-height: 1.15;
-}
-.name-deco {
-  display: block; width: 44px; height: 4px;
-  background: var(--green-light); border-radius: 2px; margin: .6rem auto 0;
-}
+      .profile-name {
+        font-size: 2rem;
+        font-weight: 800;
+        text-align: center;
+        margin: 0.5rem 1rem 0;
+        line-height: 1.15;
+      }
+      .name-deco {
+        display: block;
+        width: 44px;
+        height: 4px;
+        background: var(--green-light);
+        border-radius: 2px;
+        margin: 0.6rem auto 0;
+      }
 
-/* ─── DETAILS ROW ─── */
-.details-row {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  background: #f0faf1; border-top: 1px solid #d8eed9; border-bottom: 1px solid #d8eed9;
-  padding: .9rem 2rem; margin-top: 1.4rem; font-size: .85rem; gap: 1rem;
-}
-.details-row p { line-height: 1.8; }
-.details-row strong { color: var(--green-dark); }
-.details-right { text-align: right; color: var(--gray-text); }
+      /* ─── DETAILS ROW ─── */
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background: #f0faf1;
+        border-top: 1px solid #d8eed9;
+        border-bottom: 1px solid #d8eed9;
+        padding: 0.9rem 2rem;
+        margin-top: 1.4rem;
+        font-size: 0.85rem;
+        gap: 1rem;
+      }
+      .details-row p {
+        line-height: 1.8;
+      }
+      .details-row strong {
+        color: var(--green-dark);
+      }
+      .details-right {
+        text-align: right;
+        color: var(--gray-text);
+      }
 
-/* ─── GRID ─── */
-.cards-grid {
-  display: grid; grid-template-columns: 1fr .72fr;
-  gap: 1.2rem; padding: 1.4rem 1.4rem 0;
-}
-.panel {
-  border: 1.5px solid #d4ecd5; border-radius: var(--radius);
-  padding: 1.2rem; background: white;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.05); transition: box-shadow .2s;
-}
-.panel:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.1); }
-.panel-title {
-  font-weight: 800; font-size: .95rem; margin-bottom: .3rem;
-  display: flex; align-items: center; gap: .45rem;
-}
-.panel-title-icon {
-  width: 22px; height: 22px; background: var(--green-pale);
-  border: 1.5px solid var(--green-mid); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; font-size: .7rem;
-}
-.title-line {
-  display: block; width: 36px; height: 3px;
-  background: var(--green-mid); border-radius: 2px; margin-bottom: .7rem;
-}
-.info-list { list-style: none; }
-.info-list li {
-  padding: .42rem 0; font-size: .85rem;
-  border-bottom: 1px dashed #e0ede1; display: flex; gap: .35rem; flex-wrap: wrap;
-}
-.info-list li:last-child { border-bottom: none; }
+      /* ─── GRID ─── */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.72fr;
+        gap: 1.2rem;
+        padding: 1.4rem 1.4rem 0;
+      }
+      .panel {
+        border: 1.5px solid #d4ecd5;
+        border-radius: var(--radius);
+        padding: 1.2rem;
+        background: white;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.2s;
+      }
+      .panel:hover {
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+      }
+      .panel-title {
+        font-weight: 800;
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+      .panel-title-icon {
+        width: 22px;
+        height: 22px;
+        background: var(--green-pale);
+        border: 1.5px solid var(--green-mid);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+      }
+      .title-line {
+        display: block;
+        width: 36px;
+        height: 3px;
+        background: var(--green-mid);
+        border-radius: 2px;
+        margin-bottom: 0.7rem;
+      }
+      .info-list {
+        list-style: none;
+      }
+      .info-list li {
+        padding: 0.42rem 0;
+        font-size: 0.85rem;
+        border-bottom: 1px dashed #e0ede1;
+        display: flex;
+        gap: 0.35rem;
+        flex-wrap: wrap;
+      }
+      .info-list li:last-child {
+        border-bottom: none;
+      }
 
-.insignias-panel {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center; gap: .4rem;
-  color: var(--gray-text); font-size: .82rem;
-}
-.insignias-panel .panel-title { justify-content: center; font-size: 1rem; }
-.insignias-alert {
-  width: 36px; height: 36px; border-radius: 50%;
-  border: 2px solid var(--green-mid);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--green-mid); font-weight: 800; font-size: 1.1rem; margin: .15rem auto;
-}
-.insignias-hint { font-weight: 700; color: var(--ink); font-size: .8rem; }
+      .insignias-panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 0.4rem;
+        color: var(--gray-text);
+        font-size: 0.82rem;
+      }
+      .insignias-panel .panel-title {
+        justify-content: center;
+        font-size: 1rem;
+      }
+      .insignias-alert {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid var(--green-mid);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--green-mid);
+        font-weight: 800;
+        font-size: 1.1rem;
+        margin: 0.15rem auto;
+      }
+      .insignias-hint {
+        font-weight: 700;
+        color: var(--ink);
+        font-size: 0.8rem;
+      }
 
-/* ─── RANKING ─── */
-.ranking-wrap {
-  margin: 1.4rem 1.4rem 0;
-  border: 1.5px solid #d4ecd5; border-radius: var(--radius);
-  padding: 1.4rem; background: white; box-shadow: 0 1px 6px rgba(0,0,0,0.05);
-}
-.ranking-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.4rem; }
-.ranking-title { font-weight:800; font-size:1.1rem; }
-.star-btn { background:none; border:none; cursor:pointer; color:var(--green-mid); font-size:1.3rem; line-height:1; }
+      /* ─── RANKING ─── */
+      .ranking-wrap {
+        margin: 1.4rem 1.4rem 0;
+        border: 1.5px solid #d4ecd5;
+        border-radius: var(--radius);
+        padding: 1.4rem;
+        background: white;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+      }
+      .ranking-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.4rem;
+      }
+      .ranking-title {
+        font-weight: 800;
+        font-size: 1.1rem;
+      }
+      .star-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--green-mid);
+        font-size: 1.3rem;
+        line-height: 1;
+      }
 
-/* podium */
-.podium { display:flex; justify-content:center; align-items:flex-end; gap:.8rem; margin-bottom:1.2rem; }
-.podium-item { display:flex; flex-direction:column; align-items:center; flex:1; max-width:160px; }
-.pod-icon {
-  border-radius: 50%; display:flex; align-items:center; justify-content:center;
-  border: 3px solid var(--green-dark); background: #e8f5e9;
-  width: 62px; height: 62px;
-}
-.podium-item.first .pod-icon { width:72px; height:72px; background:#c8e6c9; }
-.pod-icon svg { width:36px; height:36px; }
-.podium-item.first .pod-icon svg { width:44px; height:44px; }
+      /* podium */
+      .podium {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 0.8rem;
+        margin-bottom: 1.2rem;
+      }
+      .podium-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        max-width: 160px;
+      }
+      .pod-icon {
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid var(--green-dark);
+        background: #e8f5e9;
+        width: 62px;
+        height: 62px;
+      }
+      .podium-item.first .pod-icon {
+        width: 72px;
+        height: 72px;
+        background: #c8e6c9;
+      }
+      .pod-icon svg {
+        width: 36px;
+        height: 36px;
+      }
+      .podium-item.first .pod-icon svg {
+        width: 44px;
+        height: 44px;
+      }
 
-.pod-body {
-  background: #f1f8e9; border: 1.5px solid #aed581;
-  border-radius: 10px 10px 0 0;
-  padding: .7rem .6rem .4rem;
-  text-align: center; width:100%; min-height:85px;
-  display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:.2rem;
-}
-.podium-item.first .pod-body {
-  background:#c8e6c9; border:2px solid var(--green-dark);
-  min-height:110px; padding:.9rem .7rem .4rem;
-}
-.pod-team { font-size:.78rem; color:var(--gray-text); }
-.pod-pts  { font-weight:800; font-size:1rem; }
-.podium-item.first .pod-pts { font-size:1.15rem; }
+      .pod-body {
+        background: #f1f8e9;
+        border: 1.5px solid #aed581;
+        border-radius: 10px 10px 0 0;
+        padding: 0.7rem 0.6rem 0.4rem;
+        text-align: center;
+        width: 100%;
+        min-height: 85px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.2rem;
+      }
+      .podium-item.first .pod-body {
+        background: #c8e6c9;
+        border: 2px solid var(--green-dark);
+        min-height: 110px;
+        padding: 0.9rem 0.7rem 0.4rem;
+      }
+      .pod-team {
+        font-size: 0.78rem;
+        color: var(--gray-text);
+      }
+      .pod-pts {
+        font-weight: 800;
+        font-size: 1rem;
+      }
+      .podium-item.first .pod-pts {
+        font-size: 1.15rem;
+      }
 
-.rank-tag {
-  width:100%; border-radius:0 0 8px 8px; padding:4px 8px;
-  font-size:.72rem; font-weight:700;
-  display:flex; justify-content:space-between; align-items:center; color:white;
-  background: var(--green-light);
-}
-.podium-item.first .rank-tag { background: var(--green-dark); }
+      .rank-tag {
+        width: 100%;
+        border-radius: 0 0 8px 8px;
+        padding: 4px 8px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        background: var(--green-light);
+      }
+      .podium-item.first .rank-tag {
+        background: var(--green-dark);
+      }
 
-/* rows */
-.rank-rows { display:flex; flex-direction:column; gap:.5rem; }
-.rank-row {
-  display:grid; grid-template-columns:48px 1fr auto;
-  align-items:center; background:var(--green-mid); color:white;
-  border-radius:8px; padding:.6rem 1rem; font-weight:700; font-size:.88rem;
-  transition: filter .2s;
-}
-.rank-row:hover { filter:brightness(1.08); }
-.rank-pts { text-align:right; }
+      /* rows */
+      .rank-rows {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .rank-row {
+        display: grid;
+        grid-template-columns: 48px 1fr auto;
+        align-items: center;
+        background: var(--green-mid);
+        color: white;
+        border-radius: 8px;
+        padding: 0.6rem 1rem;
+        font-weight: 700;
+        font-size: 0.88rem;
+        transition: filter 0.2s;
+      }
+      .rank-row:hover {
+        filter: brightness(1.08);
+      }
+      .rank-pts {
+        text-align: right;
+      }
 
-@media (max-width:560px){
-  .cards-grid { grid-template-columns:1fr; }
-  .profile-name { font-size:1.5rem; }
-  .details-row { flex-direction:column; }
-  .details-right { text-align:left; }
-  .podium { gap:.4rem; }
-}
-</style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <div class="logo">GOOD<span>GAME</span></div>
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Sobre</a>
-    <a href="#">Ranking</a>
-    <a href="#">Galeria</a>
-    <button class="btn-logout">Logout</button>
-  </div>
-</nav>
-
-<!-- BANNER -->
-<div class="banner">
-  <svg viewBox="0 0 1200 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="gsky" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#ff8a65"/>
-        <stop offset="45%" stop-color="#ffcc80"/>
-        <stop offset="100%" stop-color="#b2dfdb"/>
-      </linearGradient>
-    </defs>
-    <rect width="1200" height="220" fill="url(#gsky)"/>
-    <!-- clouds -->
-    <ellipse cx="200" cy="55" rx="60" ry="20" fill="rgba(255,255,255,.55)"/>
-    <ellipse cx="245" cy="46" rx="38" ry="14" fill="rgba(255,255,255,.45)"/>
-    <ellipse cx="700" cy="38" rx="58" ry="17" fill="rgba(255,255,255,.5)"/>
-    <ellipse cx="748" cy="32" rx="36" ry="13" fill="rgba(255,255,255,.42)"/>
-    <ellipse cx="1060" cy="58" rx="52" ry="16" fill="rgba(255,255,255,.48)"/>
-    <!-- ice mountains left -->
-    <polygon points="20,200 75,75 130,200"  fill="#b0bec5" opacity=".7"/>
-    <polygon points="80,200 140,55 200,200" fill="#90a4ae" opacity=".65"/>
-    <polygon points="0,200 45,105 90,200"   fill="#cfd8dc" opacity=".5"/>
-    <!-- ground -->
-    <ellipse cx="600" cy="260" rx="750" ry="90" fill="#388e3c" opacity=".65"/>
-    <ellipse cx="220" cy="280" rx="280" ry="70" fill="#2e7d32" opacity=".5"/>
-    <!-- big green hill right -->
-    <ellipse cx="990" cy="215" rx="155" ry="135" fill="#4caf50" opacity=".85"/>
-    <ellipse cx="990" cy="200" rx="130" ry="110" fill="#66bb6a"/>
-    <!-- tiny house on hill -->
-    <rect x="958" y="100" width="52" height="40" rx="6" fill="#795548" opacity=".85"/>
-    <rect x="968" y="110" width="13" height="13" rx="2" fill="#ffe082"/>
-    <rect x="987" y="110" width="13" height="13" rx="2" fill="#ffe082"/>
-    <line x1="996" y1="100" x2="996" y2="70" stroke="#555" stroke-width="2"/>
-    <polygon points="996,70 1014,77 996,84" fill="#e53935"/>
-  </svg>
-</div>
-
-<!-- LEAF SYMBOL (hidden) -->
-<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-  <symbol id="leaf" viewBox="0 0 40 40">
-    <circle cx="20" cy="20" r="20" fill="#1b5e20"/>
-    <circle cx="20" cy="20" r="14" fill="#2e7d32"/>
-    <path d="M20 9 Q29 17 20 31 Q11 17 20 9Z" fill="#a5d6a7"/>
-    <!-- wreath dots -->
-    <circle cx="9"  cy="20" r="2.2" fill="#4caf50"/>
-    <circle cx="31" cy="20" r="2.2" fill="#4caf50"/>
-    <circle cx="13" cy="11" r="2.2" fill="#4caf50"/>
-    <circle cx="27" cy="11" r="2.2" fill="#4caf50"/>
-    <circle cx="13" cy="29" r="2.2" fill="#4caf50"/>
-    <circle cx="27" cy="29" r="2.2" fill="#4caf50"/>
-  </symbol>
-</svg>
-
-<!-- MAIN -->
-<div class="page-wrap">
-<div class="profile-card">
-
-  <!-- Avatar + nombre -->
-  <div class="avatar-area">
-    <div class="avatar-ring">
-      <!-- ← cambia este src por tu foto -->
-      <img src="https://i.postimg.cc/mD8zM93Z/finn.webp" alt="Avatar"
-        onerror="this.style.display='none'"/>
-    </div>
-    <span class="role-badge">Aventureiro</span>
-    <!-- frontmatter.name -->
-    <h1 class="profile-name">Finn Campbell<br>Mertens</h1>
-    <span class="name-deco"></span>
-  </div>
-
-  <!-- Details -->
-  <div class="details-row">
-    <div>
-      <!-- frontmatter.email -->
-      <p><strong>Email:</strong> finncamp.mertens@gmail.com</p>
-      <!-- frontmatter.school -->
-      <p><strong>Escola:</strong> Unidos do Reino Doce</p>
-    </div>
-    <!-- frontmatter.location -->
-    <div class="details-right"><p>São Paulo, SP</p></div>
-  </div>
-
-  <!-- Sobre + Insignias -->
-  <div class="cards-grid">
-
-    <div class="panel">
-      <div class="panel-title">
-        <div class="panel-title-icon">👤</div>
-        Sobre
+      @media (max-width: 560px) {
+        .cards-grid {
+          grid-template-columns: 1fr;
+        }
+        .profile-name {
+          font-size: 1.5rem;
+        }
+        .details-row {
+          flex-direction: column;
+        }
+        .details-right {
+          text-align: left;
+        }
+        .podium {
+          gap: 0.4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="logo">GOOD<span>GAME</span></div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Sobre</a>
+        <a href="#">Ranking</a>
+        <a href="#">Galeria</a>
+        <button class="btn-logout">Logout</button>
       </div>
-      <span class="title-line"></span>
-      <ul class="info-list">
-        <!-- frontmatter.age -->
-        <li><strong>Idade:</strong> 12 Anos.</li>
-        <!-- frontmatter.home -->
-        <li><strong>Terra Natal:</strong> Reino de Ooo.</li>
-        <!-- frontmatter.partner -->
-        <li><strong>Companheiro:</strong> Jake.</li>
-        <!-- frontmatter.lastAccess -->
-        <li><strong>Ultimo Acesso:</strong> Sexta, 8 mai 2020.</li>
-      </ul>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="banner">
+      <svg
+        viewBox="0 0 1200 220"
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient id="gsky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ff8a65"></stop>
+            <stop offset="45%" stop-color="#ffcc80"></stop>
+            <stop offset="100%" stop-color="#b2dfdb"></stop>
+          </linearGradient>
+        </defs>
+        <rect width="1200" height="220" fill="url(#gsky)"></rect>
+        <!-- clouds -->
+        <ellipse cx="200" cy="55" rx="60" ry="20" fill="rgba(255,255,255,.55)"
+        ></ellipse>
+        <ellipse cx="245" cy="46" rx="38" ry="14" fill="rgba(255,255,255,.45)"
+        ></ellipse>
+        <ellipse cx="700" cy="38" rx="58" ry="17" fill="rgba(255,255,255,.5)"
+        ></ellipse>
+        <ellipse cx="748" cy="32" rx="36" ry="13" fill="rgba(255,255,255,.42)"
+        ></ellipse>
+        <ellipse cx="1060" cy="58" rx="52" ry="16" fill="rgba(255,255,255,.48)"
+        ></ellipse>
+        <!-- ice mountains left -->
+        <polygon points="20,200 75,75 130,200" fill="#b0bec5" opacity=".7"
+        ></polygon>
+        <polygon points="80,200 140,55 200,200" fill="#90a4ae" opacity=".65"
+        ></polygon>
+        <polygon points="0,200 45,105 90,200" fill="#cfd8dc" opacity=".5"
+        ></polygon>
+        <!-- ground -->
+        <ellipse cx="600" cy="260" rx="750" ry="90" fill="#388e3c" opacity=".65"
+        ></ellipse>
+        <ellipse cx="220" cy="280" rx="280" ry="70" fill="#2e7d32" opacity=".5"
+        ></ellipse>
+        <!-- big green hill right -->
+        <ellipse
+          cx="990"
+          cy="215"
+          rx="155"
+          ry="135"
+          fill="#4caf50"
+          opacity=".85"></ellipse>
+        <ellipse cx="990" cy="200" rx="130" ry="110" fill="#66bb6a"></ellipse>
+        <!-- tiny house on hill -->
+        <rect
+          x="958"
+          y="100"
+          width="52"
+          height="40"
+          rx="6"
+          fill="#795548"
+          opacity=".85"></rect>
+        <rect x="968" y="110" width="13" height="13" rx="2" fill="#ffe082"
+        ></rect>
+        <rect x="987" y="110" width="13" height="13" rx="2" fill="#ffe082"
+        ></rect>
+        <line x1="996" y1="100" x2="996" y2="70" stroke="#555" stroke-width="2"
+        ></line>
+        <polygon points="996,70 1014,77 996,84" fill="#e53935"></polygon>
+      </svg>
     </div>
 
-    <div class="panel insignias-panel">
-      <div class="panel-title">Insígnias</div>
-      <span class="title-line" style="margin:0 auto .5rem;"></span>
-      <p>Você ainda não<br>conquistou nenhum<br>emblema ;(</p>
-      <div class="insignias-alert">!</div>
-      <span class="insignias-hint">Continue tentando!</span>
-    </div>
+    <!-- LEAF SYMBOL (hidden) -->
+    <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="leaf" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="20" fill="#1b5e20"></circle>
+        <circle cx="20" cy="20" r="14" fill="#2e7d32"></circle>
+        <path d="M20 9 Q29 17 20 31 Q11 17 20 9Z" fill="#a5d6a7"></path>
+        <!-- wreath dots -->
+        <circle cx="9" cy="20" r="2.2" fill="#4caf50"></circle>
+        <circle cx="31" cy="20" r="2.2" fill="#4caf50"></circle>
+        <circle cx="13" cy="11" r="2.2" fill="#4caf50"></circle>
+        <circle cx="27" cy="11" r="2.2" fill="#4caf50"></circle>
+        <circle cx="13" cy="29" r="2.2" fill="#4caf50"></circle>
+        <circle cx="27" cy="29" r="2.2" fill="#4caf50"></circle>
+      </symbol>
+    </svg>
 
-  </div>
-
-  <!-- Ranking -->
-  <div class="ranking-wrap">
-    <div class="ranking-header">
-      <span class="ranking-title">Ranking</span>
-      <button class="star-btn">☆</button>
-    </div>
-
-    <!-- Podium -->
-    <div class="podium">
-
-      <!-- 2nd -->
-      <div class="podium-item second">
-        <div class="pod-icon">
-          <svg viewBox="0 0 40 40"><use href="#leaf"/></svg>
+    <!-- MAIN -->
+    <div class="page-wrap">
+      <div class="profile-card">
+        <!-- Avatar + nombre -->
+        <div class="avatar-area">
+          <div class="avatar-ring">
+            <!-- ← cambia este src por tu foto -->
+            <img
+              src="https://i.postimg.cc/mD8zM93Z/finn.webp"
+              alt="Avatar"
+              onerror="this.style.display='none'"
+            />
+          </div>
+          <span class="role-badge">Aventureiro</span>
+          <!-- frontmatter.name -->
+          <h1 class="profile-name">Finn Campbell<br />Mertens</h1>
+          <span class="name-deco"></span>
         </div>
-        <div class="pod-body">
-          <span class="pod-team">Equipe Dois</span>
-          <span class="pod-pts">6970pts</span>
+
+        <!-- Details -->
+        <div class="details-row">
+          <div>
+            <!-- frontmatter.email -->
+            <p><strong>Email:</strong> finncamp.mertens@gmail.com</p>
+            <!-- frontmatter.school -->
+            <p><strong>Escola:</strong> Unidos do Reino Doce</p>
+          </div>
+          <!-- frontmatter.location -->
+          <div class="details-right"><p>São Paulo, SP</p></div>
         </div>
-        <div class="rank-tag">
-          <span>#2</span>
-          <span>2 <small style="font-weight:400;font-size:.65rem">dias<br>seguidos</small></span>
+
+        <!-- Sobre + Insignias -->
+        <div class="cards-grid">
+          <div class="panel">
+            <div class="panel-title">
+              <div class="panel-title-icon">👤</div>
+              Sobre
+            </div>
+            <span class="title-line"></span>
+            <ul class="info-list">
+              <!-- frontmatter.age -->
+              <li><strong>Idade:</strong> 12 Anos.</li>
+              <!-- frontmatter.home -->
+              <li><strong>Terra Natal:</strong> Reino de Ooo.</li>
+              <!-- frontmatter.partner -->
+              <li><strong>Companheiro:</strong> Jake.</li>
+              <!-- frontmatter.lastAccess -->
+              <li><strong>Ultimo Acesso:</strong> Sexta, 8 mai 2020.</li>
+            </ul>
+          </div>
+
+          <div class="panel insignias-panel">
+            <div class="panel-title">Insígnias</div>
+            <span class="title-line" style="margin:0 auto .5rem;"></span>
+            <p>Você ainda não<br />conquistou nenhum<br />emblema ;(</p>
+            <div class="insignias-alert">!</div>
+            <span class="insignias-hint">Continue tentando!</span>
+          </div>
+        </div>
+
+        <!-- Ranking -->
+        <div class="ranking-wrap">
+          <div class="ranking-header">
+            <span class="ranking-title">Ranking</span>
+            <button class="star-btn">☆</button>
+          </div>
+
+          <!-- Podium -->
+          <div class="podium">
+            <!-- 2nd -->
+            <div class="podium-item second">
+              <div class="pod-icon">
+                <svg viewBox="0 0 40 40"><use href="#leaf"></use></svg>
+              </div>
+              <div class="pod-body">
+                <span class="pod-team">Equipe Dois</span>
+                <span class="pod-pts">6970pts</span>
+              </div>
+              <div class="rank-tag">
+                <span>#2</span>
+                <span
+                  >2 <small style="font-weight:400;font-size:.65rem"
+                    >dias<br />seguidos</small
+                  ></span
+                >
+              </div>
+            </div>
+
+            <!-- 1st -->
+            <div class="podium-item first">
+              <div class="pod-icon">
+                <svg viewBox="0 0 40 40"><use href="#leaf"></use></svg>
+              </div>
+              <div class="pod-body">
+                <span class="pod-team">Equipe Um</span>
+                <span class="pod-pts">7210pts</span>
+              </div>
+              <div class="rank-tag">
+                <span>#1</span>
+                <span
+                  >5 <small style="font-weight:400;font-size:.65rem"
+                    >dias<br />seguidos</small
+                  ></span
+                >
+              </div>
+            </div>
+
+            <!-- 3rd -->
+            <div class="podium-item third">
+              <div class="pod-icon">
+                <svg viewBox="0 0 40 40"><use href="#leaf"></use></svg>
+              </div>
+              <div class="pod-body">
+                <span class="pod-team">Equipe Três</span>
+                <span class="pod-pts">6520pts</span>
+              </div>
+              <div class="rank-tag">
+                <span>#3</span>
+                <span
+                  >1 <small style="font-weight:400;font-size:.65rem"
+                    >dias<br />seguidos</small
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Rows 4–8 -->
+          <div class="rank-rows">
+            <div class="rank-row">
+              <span>#4</span><span>Equipe Quatro</span><span class="rank-pts"
+                >5875pts</span>
+            </div>
+            <div class="rank-row">
+              <span>#5</span><span>Equipe Cinco</span><span class="rank-pts"
+                >5800pts</span>
+            </div>
+            <div class="rank-row">
+              <span>#6</span><span>Equipe Seis</span><span class="rank-pts"
+                >5535pts</span>
+            </div>
+            <div class="rank-row">
+              <span>#7</span><span>Equipe Sete</span><span class="rank-pts"
+                >5535pts</span>
+            </div>
+            <div class="rank-row">
+              <span>#8</span><span>Equipe Oito</span><span class="rank-pts"
+                >5180pts</span>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- 1st -->
-      <div class="podium-item first">
-        <div class="pod-icon">
-          <svg viewBox="0 0 40 40"><use href="#leaf"/></svg>
-        </div>
-        <div class="pod-body">
-          <span class="pod-team">Equipe Um</span>
-          <span class="pod-pts">7210pts</span>
-        </div>
-        <div class="rank-tag">
-          <span>#1</span>
-          <span>5 <small style="font-weight:400;font-size:.65rem">dias<br>seguidos</small></span>
-        </div>
-      </div>
-
-      <!-- 3rd -->
-      <div class="podium-item third">
-        <div class="pod-icon">
-          <svg viewBox="0 0 40 40"><use href="#leaf"/></svg>
-        </div>
-        <div class="pod-body">
-          <span class="pod-team">Equipe Três</span>
-          <span class="pod-pts">6520pts</span>
-        </div>
-        <div class="rank-tag">
-          <span>#3</span>
-          <span>1 <small style="font-weight:400;font-size:.65rem">dias<br>seguidos</small></span>
-        </div>
-      </div>
-
     </div>
-
-    <!-- Rows 4–8 -->
-    <div class="rank-rows">
-      <div class="rank-row"><span>#4</span><span>Equipe Quatro</span><span class="rank-pts">5875pts</span></div>
-      <div class="rank-row"><span>#5</span><span>Equipe Cinco</span><span class="rank-pts">5800pts</span></div>
-      <div class="rank-row"><span>#6</span><span>Equipe Seis</span><span class="rank-pts">5535pts</span></div>
-      <div class="rank-row"><span>#7</span><span>Equipe Sete</span><span class="rank-pts">5535pts</span></div>
-      <div class="rank-row"><span>#8</span><span>Equipe Oito</span><span class="rank-pts">5180pts</span></div>
-    </div>
-
-  </div>
-
-</div>
-</div>
-
-</body>
+  </body>
 </html>
